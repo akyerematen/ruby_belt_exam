@@ -1,0 +1,52 @@
+<style>
+	table{
+		margin-top: 30px;
+    	width: 600px;
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    	border: 1px solid black;
+	}
+	th{
+		text-align: left;
+		/*border: 1px solid #CCC;*/
+		border-bottom: 1px solid black;
+		border-right: 1px solid black;
+		background-color: lightgrey; 
+	}
+	tr:nth-child(even) {
+    background-color: #EEEEEE;
+}
+	td{
+		border-right: 1px solid black;
+	}
+	
+
+</style>
+
+<a href="/online_lending/register" style="float: right;">Logout</a>
+
+<p>Name: <%=@borrower.first_name%> <%=@borrower.last_name%>  </p>
+
+
+<p>Amount Need: <%=@borrower.amount_needed %> </p>
+<p>Amount Raised: </p>
+
+<h1>List of people who lend you money: </h1>
+<table>
+	<thead>
+        <tr>
+           <th>Name </th>
+           <th>Email</th>
+           <th>Amount Lent</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @lenders.each do |lender| %>
+    	<tr>
+     		<td> <%= lender.first_name%> <%= lender.last_name%> </td>
+     		<td> <%= lender.email%> </td>
+     		<td> <%= %> </td>
+     	</tr>
+     	<% end %>	
+    </tbody>
+</table>

@@ -1,0 +1,113 @@
+<style>
+
+.boxes{
+	display: inline-block;
+	width: 320px;
+	padding: 10px;
+	vertical-align: top;
+}
+
+input, select, textarea{
+	float: right;
+}
+
+
+
+
+
+</style>
+
+<% if flash[:errors] %>
+	<% flash[:errors].each do |e| %>
+		<p><%= e %></p>
+	<% end %>
+<% end %>
+
+<div class="boxes" id="lender">
+	<form action="/lenders" method="post">
+		<fieldset>
+		<legend>Lender</legend>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<p>
+			<label>First Name: 
+				<input type="text" name="lender[first_name]">
+			</label>
+		</p>
+		<p>
+			<label>Last_name: 
+				<input type="text" name="lender[last_name]">
+			</label>
+		</p>
+		<p>
+			<label>Email: 
+				<input type="email" name="lender[email]">
+			</label>
+		</p>
+		<p>
+			<label>Password: </label>
+			<input type="password" name="lender[password]">
+		</p>
+		<p>
+			<label>Confirm Password: </label>
+			<input type="password" name="lender[password_confirmation]">
+		</p>	
+		<p>
+			<label>Money: </label>
+			<input type="integer" name="lender[money]">
+		</p>
+		<p>
+		<a href="/online_lending/login">Already a member?</a>
+		<input type="submit" value="Register">
+		</p>
+		</fieldset>
+	</form>
+</div>
+
+
+<div class="boxes" id="borrower">
+	<form action="/borrowers" method="post">
+		<fieldset>
+		<legend>Borrower</legend>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<p>
+			<label>First Name: 
+				<input type="text" name="borrower[first_name]">
+			</label>
+		</p>
+		<p>
+			<label>Last_name: 
+				<input type="text" name="borrower[last_name]">
+			</label>
+		</p>
+		<p>
+			<label>Email: 
+				<input type="email" name="borrower[email]">
+			</label>
+		</p>
+		<p>
+			<label>Password: </label>
+			<input type="password" name="borrower[password]">
+		</p>
+		<p>
+			<label>Confirm Password: </label>
+			<input type="password" name="borrower[password_confirmation]">
+		</p>	
+		<p>
+			<label>Need Money For: </label>
+			<input type="text" name="borrower[purpose]">
+		</p>
+		<p>
+			<label>Description: </label>
+			<textarea name="borrower[description]" ></textarea>
+		</p>
+		<p>
+			<label>Amount Needed: </label>
+			<input type="text" name="borrower[amount_needed]">
+		</p>
+		<p>
+		<a href="/online_lending/login">Already a member?</a>
+		<input type="submit" value="Register">
+		</p>
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,93 @@
+<style>
+	table{
+		margin-top: 30px;
+    	width: 600px;
+    	border-collapse: collapse;
+    	border-spacing: 0;
+    	border: 1px solid black;
+	}
+	th{
+		text-align: left;
+		/*border: 1px solid #CCC;*/
+		border-bottom: 1px solid black;
+		border-right: 1px solid black;
+		background-color: lightgrey; 
+	}
+	tr:nth-child(even) {
+    background-color: #EEEEEE;
+	}
+	td{
+		border-right: 1px solid black;
+	}
+
+	.action{
+		display: inline-block;
+	}
+</style>
+
+<a href="/online_lending/register" style="float: right;">Logout</a>
+
+<p>Name: <%=@lender.first_name%> <%=@lender.last_name%>  </p>
+<p>Account Balance: <%=@lender.money %></p>
+
+<br>
+
+<h1>List of people in need of help: </h1>
+<table>
+	<thead>
+        <tr>
+           <th>Name </th>
+           <th>Need Money For</th>
+           <th>Reason for Loan</th>
+           <th>Amount Needed</th>
+           <th>Amount Raised</th>
+           <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @borrowers.each do |borrower| %>
+    	<tr>
+     		<td> <%= borrower.first_name%> <%= borrower.last_name%> </td>
+     		<td> <%= borrower.purpose%> </td>
+     		<td> <%= borrower.description%> </td>
+     		<td> <%= borrower.amount_needed%> </td>
+     		<td> <%= %> </td>
+     		<td> 
+     			<form action="/lenders/add" method="post">
+	     			<input class="action" type="integer" name="lend_amount">
+	     			<input class="action" type="submit" value="Lend">
+	     		</form>
+     		</td>
+     	</tr>
+     	<% end %>	
+    </tbody>
+</table>	
+
+
+
+<br>
+<h1>List of people you lend money to: </h1>
+<table>
+	<thead>
+        <tr>
+           <th>Name </th>
+           <th>Need Money for</th>
+           <th>Reason to Loan</th>
+           <th>Amount Needed</th>
+           <th>Amount Raised</th>
+           <th>Amount Lent</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @borrowers.each do |borrower| %>
+    	<tr>
+     		<td> <%= borrower.first_name%> <%= borrower.last_name%> </td>
+     		<td> <%= borrower.purpose%> </td>
+     		<td> <%= borrower.description%> </td>
+     		<td> <%= borrower.amount_needed%> </td>
+     		<td> <%= %> </td>
+     		<td> <%= %> </td>
+     	</tr>
+     	<% end %>	
+    </tbody>
+</table>
